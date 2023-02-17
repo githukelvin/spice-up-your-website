@@ -1,0 +1,104 @@
+*{
+    box-sizing: border-box;
+
+
+}
+:root{
+    --bd-volor: hsl(0,0%,13%);
+    --spikes-color: var(--bd-volor);
+    --spike-width: 50px;
+    --spike-height: 10px;
+}
+html{
+    color-scheme: dark light;
+}
+body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 1.25rem;
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+    background: var(--bd-volor);
+    color: white;
+}
+.wrapper{
+    max-width: 50rem;
+    margin-inline:auto;
+    padding-inline: 1rem;
+}
+.site__tittle{
+    text-align: center;
+    font-size: 3rem;
+}
+ .section__title{
+    font-size: 2.25rem;
+}
+section{
+    padding-block: 5rem; 
+    isolation: isolate;
+
+}
+.diagonal{
+    --skew-angle: -5deg;
+    position: relative;
+    --bg:linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
+    &::after{
+        content: "";
+            background-image:var(--bg) ;
+        position: absolute;
+        inset: 0;
+        transform: skewY(var(--skew-angle));
+        z-index: -1;
+    }
+}
+.spikes{
+    position: relative;
+    color: #000;
+    --spikes-color: var(--bd-volor);
+    --spike-width: 50px;
+    --spike-height: 10px;
+    background: linear-gradient(
+        to right,
+        #fdc830 , 
+        #f37335);
+        &::before,
+        &::after{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: var(--spike-height);
+        background: var(--spikes-color);
+        // mask-image: url("../svg-path.svg");
+        // mask-size: var(--spike-width) var(--spike-height);
+        // chrome browsers  support
+        -webkit-mask-image: url("../svg-path.svg");
+        -webkit-mask-size:var(--spike-width) var(--spike-height);
+       
+        }
+        &::before{
+            top: 0;
+        }
+        &::after{
+            bottom: 0;
+            transform: rotate(.5turn);
+        }
+        
+
+}
+.wavy{
+    background-image: linear-gradient(
+        to right,
+        #00f269,
+        #0574e6
+    );
+    color: #000;
+    position: relative;
+--mask:
+        radial-gradient(35.36px at 50% 50.00px, #000 99%, #0000 101%) calc(50% - 50px) 0/100px 51% repeat-x,
+        radial-gradient(35.36px at 50% -25px, #0000 99%, #000 101%) 50% 25px/100px calc(51% - 25px) repeat-x,
+        radial-gradient(35.36px at 50% calc(100% - 50.00px), #000 99%, #0000 101%) calc(50% - 50px) 100%/100px 51% repeat-x,
+        radial-gradient(35.36px at 50% calc(100% + 25.00px), #0000 99%, #000 101%) 50% calc(100% - 25px)/100px calc(51% - 25px) repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+  
+}
